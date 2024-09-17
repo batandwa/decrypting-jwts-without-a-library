@@ -11,7 +11,7 @@ const decrypt = (jwt) => {
 
     if (!parsed.hasOwnProperty("exp"))
       throw new Error("no exp field found in claims");
-    if (parsed.exp < Date.now()) throw new Error("token expired");
+    if (parsed.exp < Date.now() / 1000) throw new Error("token expired");
 
     return parsed;
   } catch (error) {
